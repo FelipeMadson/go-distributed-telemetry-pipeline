@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  telemetry-pipeline:
+    build: .
+    container_name: telemetry-pipeline
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - BUFFER_SIZE=65536
+      - WORKERS=8
+    restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus:v2.51.0
+    container_name: telemetry-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./deploy/prometheus.yml:/etc/prometheus/prometheus.yml
+    restart: unless-stopped
