@@ -3,7 +3,6 @@ package otlp
 import (
 	"encoding/json"
 	"fmt"
-	"time"
 
 	"github.com/FelipeMadson/go-distributed-telemetry-pipeline/pkg/telemetry"
 )
